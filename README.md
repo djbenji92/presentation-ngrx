@@ -1,13 +1,13 @@
 # presentation-ngrx
 
-#Démarrer le serveur
+# Démarrer le serveur
 ```
 cd json-server
 npm install
 json-server --watch fillDB.js
 ```
 
-#Projet Angular 
+# Projet Angular 
 ```
 cd presentation-angular-ngrx
 npm install
