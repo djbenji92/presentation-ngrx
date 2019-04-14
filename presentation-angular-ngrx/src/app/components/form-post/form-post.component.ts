@@ -1,15 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { PostService } from '../services/post.service';
-import { Post } from '../models/post.model';
+import { Post } from '../../models/post.model';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { AddPost } from '../store/actions/post.actions';
+import { AddPost } from '../../store/actions/post.actions';
 
 @Component({
   selector: 'app-form-post',
   templateUrl: './form-post.component.html',
-  styleUrls: ['./form-post.component.sass']
+  styleUrls: ['./form-post.component.scss']
 })
 export class FormPostComponent implements OnInit {
 
@@ -19,7 +18,6 @@ export class FormPostComponent implements OnInit {
   });
 
   constructor(
-    private postService: PostService,
     private store: Store<{ posts: Post[] }>
   ) { 
     
@@ -30,11 +28,6 @@ export class FormPostComponent implements OnInit {
 
   onSubmit(){
     this.store.dispatch(new AddPost(this.postForm.value));
-    /*this.postService.add(this.postForm.value).subscribe(res => {
-      console.log(res);
-      this.store.dispatch({ type: '[Posts Page] Load Posts' });
-    });*/
-
   }
 
 }

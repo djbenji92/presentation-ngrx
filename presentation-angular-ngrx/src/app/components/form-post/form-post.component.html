@@ -1,0 +1,16 @@
+<h1>Ajouter un article</h1>
+
+<div class="form" [formGroup]="postForm">
+
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Titre" formControlName="title">
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <textarea matInput placeholder="Contenu" formControlName="content"></textarea>
+  </mat-form-field>
+
+  <button color="primary" (click)="onSubmit()" mat-button>Enregistrer</button>
+</div>  
+
+<div>{{ count$ | async }}</div>

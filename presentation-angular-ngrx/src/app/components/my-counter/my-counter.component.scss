@@ -1,0 +1,16 @@
+span {
+   width: 100px;
+   text-align: center;
+}
+
+.row{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    h3{
+        width: 200px;
+        text-align: center;
+    }
+}

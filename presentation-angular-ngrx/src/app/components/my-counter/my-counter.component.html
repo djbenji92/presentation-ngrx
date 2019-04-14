@@ -1,0 +1,18 @@
+
+<h1>Compteur</h1>
+<div class="compteur">
+    <div class="row">
+        <button color="primary" (click)="decrement()" mat-mini-fab>-</button>
+        <h3> {{ count$ | async }}</h3>
+        <button color="primary" (click)="increment()" mat-mini-fab>+</button>
+    </div>
+   
+    <div class="row">
+        <button color="primary" (click)="reset()" mat-button>Réinitiliser</button>
+    </div>
+    
+</div>
+
+
+
+
