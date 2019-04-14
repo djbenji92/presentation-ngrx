@@ -1,6 +1,4 @@
-# presentation-ngrx
-
-# Démarrer le serveur
+# Démarrer le serveur (fausse API)
 ```
 cd json-server
 npm install
