@@ -1,0 +1,15 @@
+<div [formGroup]="postForm">
+  <label>
+    Title
+    <input type="text" formControlName="title">
+  </label>
+
+  <label>
+    Content
+    <input type="text" formControlName="content">
+  </label> 
+
+  <button type="button" (click)="onSubmit()">Save</button>
+</div>  
+
+<div>{{ count$ | async }}</div>
