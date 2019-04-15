@@ -17,14 +17,16 @@ import { environment } from '../environments/environment';
 import { ListPostsComponent } from './components/list-posts/list-posts.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
-import {MatButtonModule, MatToolbarModule, MatFormFieldModule, MatInputModule, MatDividerModule} from '@angular/material';
+import {MatButtonModule, MatToolbarModule, MatFormFieldModule, MatInputModule, MatDividerModule, MatSnackBarModule} from '@angular/material';
+import { MessageComponent } from './components/message/message.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MyCounterComponent,
     FormPostComponent,
-    ListPostsComponent
+    ListPostsComponent,
+    MessageComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +43,7 @@ import {MatButtonModule, MatToolbarModule, MatFormFieldModule, MatInputModule, M
       logOnly: environment.production, // Restrict extension to log-only mode
     }), 
 
-    MatButtonModule, MatToolbarModule, MatFormFieldModule, MatInputModule, MatDividerModule
+    MatButtonModule, MatToolbarModule, MatFormFieldModule, MatInputModule, MatDividerModule, MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

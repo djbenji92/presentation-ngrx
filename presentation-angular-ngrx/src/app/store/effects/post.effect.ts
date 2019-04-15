@@ -6,6 +6,8 @@ import { PostService } from '../../services/post.service';
 import { ActionTypes, ActionsUnion, AddPost, SuccessAddPost, LoadPosts } from '../actions/post.actions';
 import { Store } from '@ngrx/store';
 import { Post } from 'src/app/models/post.model';
+import { Add } from '../actions/message.actions';
+import { Message } from '../../models/message.model'
 
 @Injectable()
 export class PostEffects {
@@ -35,9 +37,11 @@ export class PostEffects {
           }  )*/
           switchMap(payload => this.postService.add(payload)),
           switchMap( res => [
+            new Add(new Message({content: "Article ajouté", type: "success"})),
             //new SuccessAddPost(res),
             new LoadPosts()
-          ])
+          ]),
+          
         );
 
   constructor(

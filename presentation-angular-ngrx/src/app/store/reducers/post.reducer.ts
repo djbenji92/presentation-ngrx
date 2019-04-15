@@ -9,8 +9,6 @@ export function postReducer(state = initialState, action: ActionsUnion) {
       return action.payload;
 
     case ActionTypes.SuccessAddPost:
-    let newState = [...state, action.payload]
-    console.log(action );
       return  [...state, action.payload];
  
     default:
