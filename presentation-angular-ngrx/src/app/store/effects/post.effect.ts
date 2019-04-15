@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
-import { EMPTY, pipe } from 'rxjs';
+import { EMPTY, pipe, Observable, of } from 'rxjs';
 import { map, mergeMap, catchError, switchMap } from 'rxjs/operators';
 import { PostService } from '../../services/post.service';
 import { ActionTypes, ActionsUnion, AddPost, SuccessAddPost, LoadPosts } from '../actions/post.actions';
@@ -8,6 +8,7 @@ import { Store } from '@ngrx/store';
 import { Post } from 'src/app/models/post.model';
 import { Add } from '../actions/message.actions';
 import { Message } from '../../models/message.model'
+import { ActionTypes as ActionTypeMessage } from '../actions/message.actions';
 
 @Injectable()
 export class PostEffects {
@@ -28,19 +29,22 @@ export class PostEffects {
     .pipe(
       ofType(ActionTypes.AddPost),
         map( (action: AddPost) => action.payload ),
-          /*switchMap( payload => {
-            return this.postService.add(payload)
-              .pipe(
-                map( post => ({ type: ActionTypes.SuccessAddPost, payload:post}) ),
-                catchError(() => EMPTY)
-              )
-          }  )*/
           switchMap(payload => this.postService.add(payload)),
-          switchMap( res => [
-            new Add(new Message({content: "Article ajouté", type: "success"})),
-            //new SuccessAddPost(res),
-            new LoadPosts()
-          ]),
+          pipe(
+            switchMap( res => [
+              new Add(new Message({content: "Article ajouté", type: "success"})),
+              //new SuccessAddPost(res),
+              new LoadPosts()
+            ]),
+            catchError( (error) => {
+              let message = new Message({content: "Erreur - Impossible d'ajouter l'article", type: "error"});
+              return of({
+                type: ActionTypeMessage.Add,
+                payload: message
+              });
+            } )
+          )
+          
           
         );
 
