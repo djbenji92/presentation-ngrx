@@ -2,11 +2,11 @@ import { Action } from '@ngrx/store';
 import { Post } from '../../models/post.model';
  
 export enum ActionTypes {
-  LoadPosts = '[Posts Page] Load Posts',
-  SucessList = '[Posts API] Posts Loaded Success',
+  LoadPosts = '[Posts] Load Posts',
+  SucessList = '[Posts - API] Posts Loaded Success',
 
-  AddPost = '[Post Page] Add Post',
-  SuccessAddPost = '[Posts API] Post created',
+  AddPost = '[Posts] Add Post',
+  SuccessAddPost = '[Posts - API] Post created',
 }
 
 export class LoadPosts implements Action {

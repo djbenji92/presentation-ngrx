@@ -28,6 +28,7 @@ export class FormPostComponent implements OnInit {
 
   onSubmit(){
     this.store.dispatch(new AddPost(this.postForm.value));
+    this.postForm.reset();
   }
 
 }

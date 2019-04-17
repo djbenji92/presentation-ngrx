@@ -3,13 +3,13 @@ import { Action } from '@ngrx/store';
 import { Message } from '../../models/message.model';
  
 export enum ActionTypes {
-  Add = '[Message] Add',
-  Clean = '[Message] Clean',
+  AddMessage = '[Message] Add',
+  CleanMessage = '[Message] Clean',
   IsView = '[Message] Is View'
 }
  
-export class Add implements Action {
-  readonly type = ActionTypes.Add;
+export class AddMessage implements Action {
+  readonly type = ActionTypes.AddMessage;
 
   constructor(public payload: Message) {
   }
@@ -19,8 +19,8 @@ export class IsView implements Action {
   readonly type = ActionTypes.IsView;
 }
  
-export class Clean implements Action {
-  readonly type = ActionTypes.Clean;
+export class CleanMessage implements Action {
+  readonly type = ActionTypes.CleanMessage;
 }
 
-export type ActionMessage = Add | IsView | Clean;
+export type ActionMessage = AddMessage | IsView | CleanMessage;

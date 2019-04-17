@@ -3,7 +3,7 @@ import { Message } from 'src/app/models/message.model';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { MatSnackBar } from '@angular/material';
-import { Clean, IsView } from 'src/app/store/actions/message.actions';
+import { CleanMessage, IsView } from 'src/app/store/actions/message.actions';
 
 @Component({
   selector: 'app-message',
@@ -17,8 +17,8 @@ export class MessageComponent implements OnInit {
   constructor(private store: Store<{ message: Message }>, private snackBar: MatSnackBar) {
     this.message$ = store.select(state => {
       if(state.message && state.message.view === false){
-        store.dispatch(new IsView());
         this.openSnakBar(state.message);
+        store.dispatch(new IsView());
       }
 
       return state.message;
@@ -34,7 +34,7 @@ export class MessageComponent implements OnInit {
     });
 
     snackBarRef.afterDismissed().subscribe(() => {
-      this.store.dispatch(new Clean());
+      this.store.dispatch(new CleanMessage());
     });
   }
 

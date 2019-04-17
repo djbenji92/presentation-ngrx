@@ -1,6 +1,5 @@
 
 <h1>Mes articles</h1>
-<button></button>
 
 <div *ngIf="(posts$ | async)  as posts; else loading;">
   <div *ngFor="let post of posts">

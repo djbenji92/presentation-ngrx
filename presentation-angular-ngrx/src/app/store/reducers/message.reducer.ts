@@ -5,14 +5,14 @@ export const initialState = null;
  
 export function messageReducer(state = initialState, action: ActionMessage) {
   switch (action.type) {
-    case ActionTypes.Add:
+    case ActionTypes.AddMessage:
       return action.payload;
  
-    case ActionTypes.Clean:
+    case ActionTypes.CleanMessage:
       return null;
 
     case ActionTypes.IsView:
-      return { state, view: true}
+      return { ...state, view: true}
  
     default:
       return state;
